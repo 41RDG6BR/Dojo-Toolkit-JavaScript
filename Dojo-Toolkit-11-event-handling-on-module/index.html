@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo: on</title>
+</head>
+<body>
+    
+    <div id="myDiv">Mouse over to change my background to yellow</div>
+    <button id="showDiv">showDiv</button>
+    
+    <button id="hideDiv">hideDiv</button>
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.12.1/dojo/dojo.js" data-dojo-config="async:true"></script>
+
+    <script>
+        require(["dojo/dom", "dojo/on", "dojo/domReady!"], function(dom, on) {
+            var showButton = dom.byId("showDiv");
+            var hideButton = dom.byId("hideDiv");
+            var div = dom.byId("myDiv");
+
+            on(div, "mouseenter", function(event) {
+                div.innerHTML = "Move mouse pointer away to change color to white";
+                div.style.background="yellow";
+            });
+
+            on(div, "mouseleave", function(event) {
+                div.style.background="white";
+                div.innerHTML = "Move mouse pointer away to change color to yellow";
+            });
+
+            on(hideButton, "click", function(event) {
+                div.style.display="none";
+            });
+
+            on(showButton, "click", function(event) {
+                if(div.style.display=="none") {
+                    div.style.display="block";
+                }
+            });
+        });
+
+
+    </script>
+</body>
+</html>

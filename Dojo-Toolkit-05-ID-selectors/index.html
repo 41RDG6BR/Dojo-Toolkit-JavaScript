@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello DOJO</title>
+</head>
+<body>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.12.1/dojo/dojo.js"></script> -->
+    <script src="dojo-release-1.16.4/dojo/dojo.js"></script>
+    <script>
+        dojo.ready(
+            function() {
+                var i = dojo.byId("test");
+                console.log(i.innerHTML);
+                i.innerHTML="test Hello"
+            }
+        )
+    </script>
+    <h1 id="test">Hello World</h1>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo: on</title>
+    <style>
+        .clickMe{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nodelist.on demo</h1>    
+    <div id="myDiv">
+        <button id="button1" name="buttonTest1" class="clickMe">Click me 1</button>
+        <button id="button2" name="buttonTest2" class="clickMe">Click me 2</button>
+        <button id="button3" name="buttonTest3" class="clickMe">Click me 3</button>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.12.1/dojo/dojo.js" data-dojo-config="async:true"></script>
+
+    <script>
+        // require([
+        //     "dojo/dom", 
+        //     "dojo/on", 
+        //     "dojo/query", 
+        //     "dojo/domReady!"
+        // ], function(
+        //     dom, 
+        //     on, 
+        //     mouse, 
+        // ) {
+        //     var myDiv = dom.byId('myDiv');
+
+        //     on(myDiv, on.selector(".clickMe", "click"), function(e) {
+        //         alert(e.target.id);
+        //     })
+        // });
+
+        // require([
+        //     "dojo/dom", 
+        //     "dojo/on", 
+        //     "dojo/query", 
+        //     "dojo/domReady!"
+        // ], function(
+        //     dom, 
+        //     on, 
+        //     mouse, 
+        // ) {
+        //     var myDiv = dom.byId('myDiv');
+
+        //     on(myDiv, on.selector("[name^='buttonTest']", "click"), function(e) {
+        //         alert(e.target.id);
+        //     })
+        // });
+
+        require([
+            "dojo/dom", 
+            "dojo/on", 
+            "dojo/query", 
+            "dojo/domReady!"
+        ], function(
+            dom, 
+            on, 
+            query, 
+        ) {
+            var myDiv = dom.byId('myDiv');
+
+            on(myDiv, ".clickMe:click", function(e) {
+                alert(e.target.id);
+            })
+        });
+    </script>
+</body>
+</html>

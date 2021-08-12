@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pausable demo</title>
+</head>
+<body>
+    <div id="myDiv">
+        <button id="enable">enable</button>
+        <button id="disable">disable</button>
+        <button id="clickMe">clickMe</button>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.12.1/dojo/dojo.js" data-dojo-config="async:true"></script>
+
+    <script>
+        require([
+            "dojo/dom", 
+            "dojo/on", 
+            "dojo/domReady!"
+        ], function(
+            dom, 
+            on, 
+        ) {
+            var enableButton = dom.byId("enable");
+            var disableButton = dom.byId("disable");
+            var clickBtn = dom.byId("clickMe");
+
+            var buttonHandler = on.pausable(clickBtn, "click", function(e) {
+                alert("I am clickable");
+
+                on(disableButton, "click", function(e) {
+                     buttonHandler.pause();
+                });
+
+                on(enableButton, "click", function(e) {
+                     buttonHandler.resume();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
