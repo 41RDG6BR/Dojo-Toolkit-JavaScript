@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement demo</title>
+</head>
+<body>
+    <h1>Demo: place</h1>
+
+    <ul id="list">
+        <li id="one">ONE</li>
+        <li id="two">TWO</li>
+        <li style="color:red;" id="three">THREE</li>
+        <li id="four">FOUR</li>
+        <li id="five">FIVE</li>
+    </ul>
+    
+    <button id="moveToTheTop">MoveToTop</button>
+    <button id="moveToTheBottom">MoveToBottom</button>
+    <h2>Click to make THREE the first item on the list</h2>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.12.1/dojo/dojo.js" data-dojo-config="async:true"></script>
+
+    <script>
+        require([
+            "dojo/dom", 
+            "dojo/dom-construct", 
+            "dojo/on", 
+            "dojo/domReady!"
+        ], function(
+            dom,
+            domConstruct,
+            on
+        ) {
+
+            var list = dom.byId("list");
+            var three = dom.byId("three");
+            var topButton = dom.byId("moveToTheTop");
+            var bottomButton = dom.byId("moveToTheBottom");
+
+            function moveToTheTop() {
+                domConstruct.place(three, list, "first");
+            }
+
+            function moveToTheBottom() {
+                domConstruct.place(three, list, "last");
+            }
+
+            on(topButton, "click", moveToTheTop)
+            on(bottomButton, "click", moveToTheBottom);
+        })
+    </script>
+</body>
+</html>
