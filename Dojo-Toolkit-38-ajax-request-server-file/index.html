@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOJO request</title>
+</head>
+<body>
+    <h1>DEMO: DOJO/REQUEST</h1>
+
+        <div id="testDiv"></div>
+
+    <button id="textButton">Click Here!</button>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.12.1/dojo/dojo.js" data-dojo-config="async:true"></script>
+    <script>
+        require([
+            "dojo/dom", 
+            "dojo/on", 
+            "dojo/request", 
+            "dojo/domReady"
+        ], function(
+            dom,
+            on,
+            request
+            ) {
+            // Results will be displayed in testDiv
+            var testDiv = dom.byId("testDiv");
+
+            on(dom.byId("textButton"), "click", function(evt) {
+                request.get("http://localhost:8080/home").then(
+                    function(response) {
+                        console.log(response);
+                        // Display the text file content
+                        testDiv.innerHTML = response;
+                    },
+                    function(error) {
+                        //Display the error returned
+                        testDiv.innerHTML = "<div class=\"error\">"+error+"<div>";
+                    }
+                );
+            });
+        });
+    </script>
+</body>
+</html>
